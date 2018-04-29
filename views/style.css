@@ -1,0 +1,31 @@
+body {
+  text-align: center;
+}
+
+table {
+  display: inline-table;
+  border: 3px solid black;
+}
+
+th {
+  border: 3px solid black;
+}
+
+td {
+  border: 1px solid black;
+}
+
+th,td {
+  padding: 3px;
+  margin: 3px;
+}
+
+tr:first-of-type td {
+  background-color: grey;
+  color: rgb(38, 38, 38);
+}
+
+tr:last-of-type td {
+  background-color: purple;
+  color: yellow;
+}

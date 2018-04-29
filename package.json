@@ -1,0 +1,13 @@
+{
+  "name": "CAutoProject",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/milonti/CAutoProject.git",
+  "author": "Michael Zipp <milonti1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.8.6",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}
