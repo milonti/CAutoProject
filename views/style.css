@@ -21,7 +21,7 @@ th,td {
 }
 
 tr:first-of-type td {
-  background-color: grey;
+  background-color: darkblue;
   color: rgb(38, 38, 38);
 }
 

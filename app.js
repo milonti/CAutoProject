@@ -18,17 +18,25 @@ function createWindow(){
   win.on('closed', () => {
     win = null;
   })
+
+  win.maximize();
+  win.webContents.openDevTools();
 }
 
-module.exports.App = class App extends React.Component {
-  render(){
-    return (<div>
-    Hello world!
-  </div>);
-  }
-}
+// module.exports.App = class App extends React.Component {
+//   render(){
+//     return (<div>
+//     Hello world!
+//   </div>);
+//   }
+// }
 
-app.on('ready', createWindow)
+
+
+// module.exports.App = App;
+
+app.on('ready', createWindow);
+
 app.on('window-all-closed', () => {
   if (process.platform !=='darwin'){
     app.quit()
