@@ -26,3 +26,21 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+table.weekCalendar {
+  display: inline-table;
+  border: 3px solid black;
+  border-spacing: 5px;
+}
+
+.weekCalendar th {
+  border: 3px solid black;
+}
+
+.weekCalendar td {
+  border: 1px solid black;
+}
+
+.weekCalendar th,td {
+  padding: 5px;
+}

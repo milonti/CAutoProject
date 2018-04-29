@@ -14,7 +14,18 @@ class App extends Component {
         <p className="App-intro">
           Look it's ELECTRON
         </p>
-        <TimeSlot time="Early Morning" />
+        <table className="weekCalendar">
+          <tbody>
+            <tr>
+              <td>
+                <TimeSlot time="Early Morning" />
+              </td>
+              <td>
+                <TimeSlot time="Early Morning" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
@@ -24,7 +35,6 @@ class TimeSlot extends Component {
   constructor(props){
     super(props);
     uid.enableUniqueIds(this);
-    this.time = props.time;
     this.state = {
       filled: false,
       person: "",
@@ -34,7 +44,7 @@ class TimeSlot extends Component {
   render() {
     return (
       <div className="timeSlot unselected" id={this.getUniqueId('timeslot')}>
-        <p className="time">{this.time}</p>
+        <p className="time">{this.props.time}</p>
       </div>
     )
   }
