@@ -5,6 +5,12 @@ class TimeSlot extends Component {
   constructor(props){
     super(props);
     uid.enableUniqueIds(this);
+    /**
+      * Three states
+      * UNFILLED : modal closed, no info in slot, nothing scheduled
+      * FILLING  : modal open, getting info
+      * FILLED   : modal closed, rendering info
+    ***/
     this.fillState = {
       UNFILLED  :'unfilled',
       FILLING   :'filling',
