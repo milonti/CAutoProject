@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TimeSlot from './components/cmp_TimeSlot.jsx'
+// import TimeSlot from './components/cmp_TimeSlot.jsx'
 import DaySched from './components/cmp_DaySched.jsx'
+import WeekSched from './components/cmp_WeekSched.jsx'
 
 class App extends Component {
   render() {
@@ -15,7 +16,7 @@ class App extends Component {
         <p className="App-intro">
           Look it's ELECTRON
         </p>
-        <table className="weekCalendar">
+        { /** <table className="weekCalendar">
           <tbody>
             <DaySched dayOfWeek="Sunday" dayType="weekend" />
           </tbody>
@@ -49,7 +50,8 @@ class App extends Component {
           <tbody>
             <DaySched dayOfWeek="Saturday" dayType="weekend" />
           </tbody>
-        </table>
+        </table> **/ }
+        <WeekSched id='week1' />
       </div>
     );
   }

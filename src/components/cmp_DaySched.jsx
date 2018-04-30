@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import TimeSlot from './cmp_TimeSlot.jsx';
+/**
+  * DaySched is a collection of populated <tr> tags
+**/
 class DaySched extends Component {
   createTdRowFromComponent(comp,kVal){
     return (
