@@ -44,3 +44,13 @@ table.weekCalendar {
 .weekCalendar th,td {
   padding: 5px;
 }
+
+div.unfilled {
+  background: darkslategray;
+  color: red;
+}
+
+th.dayHeader {
+  background: darkcyan;
+  color: goldenrod;
+}

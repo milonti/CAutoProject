@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-var uid = require('react-html-id');
+import TimeSlot from './components/cmp_TimeSlot.jsx'
+import DaySched from './components/cmp_DaySched.jsx'
 
 class App extends Component {
   render() {
@@ -16,37 +17,41 @@ class App extends Component {
         </p>
         <table className="weekCalendar">
           <tbody>
-            <tr>
-              <td>
-                <TimeSlot time="Early Morning" />
-              </td>
-              <td>
-                <TimeSlot time="Early Morning" />
-              </td>
-            </tr>
+            <DaySched dayOfWeek="Sunday" dayType="weekend" />
+          </tbody>
+        </table>
+        <table className="weekCalendar">
+          <tbody>
+            <DaySched dayOfWeek="Monday" />
+          </tbody>
+        </table>
+        <table className="weekCalendar">
+          <tbody>
+            <DaySched dayOfWeek="Tuesday" />
+          </tbody>
+        </table>
+        <table className="weekCalendar">
+          <tbody>
+            <DaySched dayOfWeek="Wednesday" />
+          </tbody>
+        </table>
+        <table className="weekCalendar">
+          <tbody>
+            <DaySched dayOfWeek="Thursday" />
+          </tbody>
+        </table>
+        <table className="weekCalendar">
+          <tbody>
+            <DaySched dayOfWeek="Friday" />
+          </tbody>
+        </table>
+        <table className="weekCalendar">
+          <tbody>
+            <DaySched dayOfWeek="Saturday" dayType="weekend" />
           </tbody>
         </table>
       </div>
     );
-  }
-}
-
-class TimeSlot extends Component {
-  constructor(props){
-    super(props);
-    uid.enableUniqueIds(this);
-    this.state = {
-      filled: false,
-      person: "",
-      phone: ""
-    }
-  }
-  render() {
-    return (
-      <div className="timeSlot unselected" id={this.getUniqueId('timeslot')}>
-        <p className="time">{this.props.time}</p>
-      </div>
-    )
   }
 }
 
