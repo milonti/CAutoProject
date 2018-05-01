@@ -7,16 +7,13 @@ import React from 'react';
 window.check = {};
 class StuffList extends React.Component {
   componentDidMount(){
-    console.log("~~Component Mounted~~")
-    // console.log(this.props.stuffs);
     this.props.stuffActions.makeStuff('Dave',1);
     this.props.stuffActions.makeStuff('Brian',3);
     this.props.stuffActions.makeStuff('Anna',22);
     this.props.stuffActions.makeStuff('Dave',1);
     this.props.stuffActions.makeStuff('Zipp',3);
     this.props.stuffActions.makeStuff('Anna',50);
-    console.log("~~End of DidMount~~")
-    this.forceUpdate(()=>{console.log('Updating after componentDidMount')});
+    this.forceUpdate();
   }
   renderData() {
     var divs = [];

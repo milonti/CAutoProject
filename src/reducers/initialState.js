@@ -4,7 +4,6 @@ export default {
     stuffsLength : 0
   },
   timeStore:{
-    filledSlots : {},
-    modalOpen : false
+    filledSlots : {}
   }
 };
