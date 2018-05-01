@@ -4,6 +4,7 @@ import './App.css';
 // import TimeSlot from './components/cmp_TimeSlot.jsx'
 // import DaySched from './components/cmp_DaySched.jsx'
 import WeekSched from './components/cmp_WeekSched.jsx'
+import StuffList from './components/cmp_StuffList.js'
 
 class App extends Component {
   render() {
@@ -16,6 +17,9 @@ class App extends Component {
         <p className="App-intro">
           Look it's ELECTRON
         </p>
+        <div>
+          <StuffList />
+        </div><br></br>
         <WeekSched id='week1' />
       </div>
     );

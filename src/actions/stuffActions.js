@@ -15,11 +15,21 @@ export function fetchStuff() {
       mode: 'cors',
       credentials: 'include',
       headers: {
-        'x-api-key': apiKey,
+        'x-api-key': 'apiKey',
         'Accept': 'application/json'
       }
     })
     .then(response => response.json())
     .then(json => dispatch(receiveStuff(json)));
   };
+}
+
+export function makeStuff(name,num){
+  let json = {'stuff':{'name':name,'number':num}};
+  return receiveStuff(json);
+
+}
+
+export function removeStuff(index){
+  return {type: types.REMOVE_STUFF, ind:index};
 }
