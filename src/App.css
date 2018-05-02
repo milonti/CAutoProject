@@ -43,14 +43,19 @@ table.weekCalendar {
 
 .weekCalendar th,td {
   padding: 5px;
+  width: 6em;
 }
 
 div.unfilled {
   background: darkslategray;
-  color: red;
+  color: rgb(165, 167, 217);
 }
 
 th.dayHeader {
   background: darkcyan;
   color: goldenrod;
+}
+.time{
+  padding: 5px 10px;
+  line-height: 200%;
 }

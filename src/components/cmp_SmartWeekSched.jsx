@@ -4,15 +4,36 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as timeActions from '../actions/timeActions'
 
+let disdis = {
+
+type: 'FILL_SLOT',
+slot: {
+ name: 'dave',
+ phone: '1234',
+ id: 'Sunday2',
+type:'stuff'
+}
+
+}
+
 class SmartWeekSched extends Component {
   handleChildEvent(e,data){
     console.log('Open modal for slot: ' + data);
+    let hour = parseInt(data.substring(data.search(/\d/),data.length-2));
+    hour = (data.substring(data.length-2) === 'am' ? hour-7 : hour+5);
+    let day = data.substring(data.search(/\d/),-1);
+    let sslot = this.props.filledSlots[day+hour]
+    let aslot = {name:'OMGSTEVE',phone: 12345, type: 'screen'};
+    let newState = Object.assign(this.state);
+    newState.daySlots[day][hour] = aslot;
+    this.setState({daySlots: newState.daySlots});
+
   }
   componentDidMount(){
     //initialization of store slot values
-    for(var d in this.daySlots){
-      var day = this.daySlots[d];
-      for(var hour in day){
+    for(let d in this.daySlots){
+      let day = this.daySlots[d];
+      for(let hour in day){
         this.props.actions.makeSlot(d+hour);
       }
     }
@@ -30,29 +51,32 @@ class SmartWeekSched extends Component {
       0:'Sunday'
     }
     this.days = [];
-    var daySlots = {};
-    for(var d in this.dow){
-      daySlots[this.dow[d]] = {}
-      for(var hour = 2; hour < 11; hour++){
-        daySlots[this.dow[d]][hour] = {'name':'','phone':'','type':''};
+    this.daySlots = {};
+    for(let d in this.dow){
+      this.daySlots[this.dow[d]] = {}
+      for(let hour = 2; hour < 11; hour++){
+        this.daySlots[this.dow[d]][hour] = {'name':'','phone':'123','type':'n'};
       }
-      this.days[d] = (
-        <table key={'day'+d} className='weekCalendar'>
-          <tbody>
-            <SmartDaySched
-              dayOfWeek={this.dow[d]} dayType={(d >= 5)?'weekend':'weekday'}
-              handler={this.handleChildEvent} slotInfo={daySlots[this.dow[d]]} />
-          </tbody>
-        </table>
-      )
     }
-    this.daySlots = daySlots;
     this.state = {
+      daySlots : this.daySlots,
       dayTables: this.days,
       dow: this.dow
     }
   }
   render(){
+    this.days = []
+    for(let d in this.dow){
+      this.days[d] = (
+        <table key={'day'+d} className='weekCalendar'>
+          <tbody>
+            <SmartDaySched
+              dayOfWeek={this.dow[d]} dayType={(d >= 5)?'weekend':'weekday'}
+              handler={this.handleChildEvent} slotInfo={this.state.daySlots[this.dow[d]]} />
+          </tbody>
+        </table>
+      )
+    }
     return (
       <div className='weekSchedule' id={this.props.id}>
         {this.days}

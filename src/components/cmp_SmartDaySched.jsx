@@ -14,8 +14,9 @@ class SmartDaySched extends Component {
       </tr>
     )
   }
-  updateTimeSlotInfo(slotInfo, hour){
-
+  static getDerivedStateFromProps(nextProps, prevState){
+    console.log('Updating state...')
+    return {slotInfo: nextProps.slotInfo};
   }
   constructor(props){
     super(props);
@@ -23,6 +24,9 @@ class SmartDaySched extends Component {
     //Slots is going to map to table rows
     //As such rows 0,1,11 will have special initialization
     this.slots = [];
+    this.state = {
+      slotInfo : this.props.slotInfo
+    }
     this.slots[0] = (
       <tr key='header'>
         <th className={"dayHeader "+this.props.dayType} >
@@ -30,22 +34,20 @@ class SmartDaySched extends Component {
         </th>
       </tr>
     )
-    this.slots[1] = this.createTdRowFromComponent(<SmartTimeSlot time="Morning" id={this.props.dayOfWeek + 'Morning'} />,"Early");
-    this.slots[11] = this.createTdRowFromComponent(<SmartTimeSlot time="Evening" id={this.props.dayOfWeek + 'Evening'}   />,"Late");
+    this.slots[1] = this.createTdRowFromComponent(<SmartTimeSlot time="Morning"
+      id={this.props.dayOfWeek + 'Morning'} />,"Early");
+    this.slots[11] = this.createTdRowFromComponent(<SmartTimeSlot time="Evening"
+      id={this.props.dayOfWeek + 'Evening'}   />,"Late");
+  }
+  render(){
     var timeString = "";
     for(var hour = 2; hour < 11; hour++ ){
       //Ternary helps us get correct mapping to AM and PM and right hour number
       timeString = (hour+7<13 ? (hour+7)+"am" : (hour-5)+"pm")
-      var slot = <SmartTimeSlot time={timeString} id={this.props.dayOfWeek + timeString} slot={this.props.slotInfo[hour]} handler={this.handleChildEvent} />
-      this.slots[hour] = this.createTdRowFromComponent(slot,hour);
+      let slotForHelper = <SmartTimeSlot time={timeString} id={this.props.dayOfWeek + timeString}
+        slot={this.state.slotInfo[hour]} handler={this.handleChildEvent} />
+      this.slots[hour] = this.createTdRowFromComponent(slotForHelper,hour);
     }
-    this.state = {
-      slotComps : this.slots,
-      slotInfo : this.props.slotInfo
-    }
-
-  }
-  render(){
     return this.slots;
   }
 
