@@ -5,8 +5,13 @@ import './App.css';
 // import DaySched from './components/cmp_DaySched.jsx'
 import WeekSched from './components/cmp_WeekSched.jsx'
 import StuffList from './components/cmp_StuffList.js'
+import SmartDaySched from './components/cmp_SmartDaySched.jsx'
+import SmartWeekSched from './components/cmp_SmartWeekSched.jsx'
 
 class App extends Component {
+  handleChildEvent(e,data){
+    console.log('Open modal for slot: ' + data);
+  }
   render() {
     return (
       <div className="App">
@@ -18,9 +23,16 @@ class App extends Component {
           Look it's ELECTRON
         </p>
         <div>
-          <StuffList />
+          {/*<table>
+            <tbody>
+              <SmartDaySched dayOfWeek="Monday" handler={this.handleChildEvent} />
+            </tbody>
+          </table>*/}
+
+           {/*<StuffList />*/}
         </div><br></br>
-        <WeekSched id='week1' />
+        {/**<WeekSched id='week1' />**/}
+        <SmartWeekSched id='week1' />
       </div>
     );
   }

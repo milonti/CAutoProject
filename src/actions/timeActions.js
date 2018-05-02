@@ -9,6 +9,10 @@ export function fillSlot(slotInfo) {
   return {type: types.FILL_SLOT, slot: slot};
 }
 
+export function makeSlot(slotId){
+  return {type: types.MAKE_SLOT, id: slotId};
+}
+
 export function emptySlot(slotInfo) {
   let slotid = slotInfo.id;
   return {type: types.EMPTY_SLOT, id: slotid};

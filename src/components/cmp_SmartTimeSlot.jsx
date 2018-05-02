@@ -1,30 +1,27 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as timeActions from '../actions/timeActions';
-import PropTypes from 'prop-types';
+import * as timeActions from '../actions/timeActions'
 
 class SmartTimeSlot extends Component {
   constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.props.handler.bind(this);
   }
   render() {
-    if(this.props.slot == undefined ){
+    if(this.props.slot.name === undefined || this.props.slot.name === ''){
       return this.renderUnfilled();
     }
     else return this.renderFilled();
   }
   renderUnfilled() {
     return (
-      <div className="timeSlot unfilled" id={this.props.id} onClick={this.handleClick}>
+      <div className="timeSlot unfilled" id={this.props.id} onClick={(e)=>this.handleClick(e,this.props.id)}>
         <span className="time">{this.props.time}</span>
       </div>
     )
   }
   renderFilled() {
     return (
-      <div className="timeSlot filled" id={this.props.id} onClick={this.handleClick} >
+      <div className="timeSlot filled" id={this.props.id} onClick={(e)=>this.handleClick(e,this.props.id)} >
         <span className="time">{this.props.time}</span>
         <span className="meetingInfo">Name: {this.props.slot.person}</span>
         <span className="meetingInfo">Phone #: {this.props.slot.phone}</span>
@@ -32,23 +29,18 @@ class SmartTimeSlot extends Component {
       </div>
     )
   }
-  handleClick(e){
-    console.log('Click: ',e);
-  }
+  // handleClick(e,data){
+  //   e.persist();
+  //   console.log('Click: ',e);
+  //   console.log('Data: ',data)
+  // }
 }
-TimeSlot.defaultProps = {
+SmartTimeSlot.defaultProps = {
   time: "Midnight",
-  id: "MondayMidnight"
+  id: "MondayMidnight",
+  slot: {'name':'','phone':'','type':''},
+  handler: () => {}
 }
-function mapStateToProps(state) {
-  return {
-    slot: state.timeStore.filledSlots[this.props.id],
-  };
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(timeActions, dispatch)
-  };
-}
+
 
 export default SmartTimeSlot;
