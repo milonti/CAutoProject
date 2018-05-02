@@ -9,7 +9,13 @@ class SmartWeekSched extends Component {
     console.log('Open modal for slot: ' + data);
   }
   componentDidMount(){
-
+    //initialization of store slot values
+    for(var d in this.daySlots){
+      var day = this.daySlots[d];
+      for(var hour in day){
+        this.props.actions.makeSlot(d+hour);
+      }
+    }
   }
   constructor(props) {
     super(props);

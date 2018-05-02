@@ -9,9 +9,6 @@ import SmartDaySched from './components/cmp_SmartDaySched.jsx'
 import SmartWeekSched from './components/cmp_SmartWeekSched.jsx'
 
 class App extends Component {
-  handleChildEvent(e,data){
-    console.log('Open modal for slot: ' + data);
-  }
   render() {
     return (
       <div className="App">
