@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SmartDaySched from './cmp_SmartDaySched.jsx';
+import PopupModal from './cmp_PopupModal.jsx';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as timeActions from '../actions/timeActions'
@@ -18,16 +19,35 @@ type:'stuff'
 
 class SmartWeekSched extends Component {
   handleChildEvent(e,data){
-    console.log('Open modal for slot: ' + data);
     let hour = parseInt(data.substring(data.search(/\d/),data.length-2));
     hour = (data.substring(data.length-2) === 'am' ? hour-7 : hour+5);
     let day = data.substring(data.search(/\d/),-1);
     let sslot = this.props.filledSlots[day+hour]
-    let aslot = {name:'OMGSTEVE',phone: 12345, type: 'screen'};
     let newState = Object.assign(this.state);
-    newState.daySlots[day][hour] = aslot;
-    this.setState({daySlots: newState.daySlots});
-
+    let aslot = disdis.slot;
+    newState.daySlots[day][hour] = sslot;
+    this.setState(newState);
+    var targ = e.target;
+    while(targ.tagName !== "TD"){
+      targ = targ.parentElement;
+    }
+    let modx = targ.getBoundingClientRect().x+targ.getBoundingClientRect().width;
+    let mody = targ.getBoundingClientRect().y;
+    if(day === 'Friday' || day === 'Saturday'){
+        this.modal.getWrappedInstance().toggleModal(modx,mody,day+hour,true);
+    }
+    else{
+      this.modal.getWrappedInstance().toggleModal(modx,mody,day+hour);
+    }
+  }
+  updateInfoFromChildren(e,data){
+    console.log(data);
+    let hour = parseInt(data.id.substring(data.id.search(/\d/)));
+    let day = data.id.substring(0,data.id.search(/\d/));
+    let sslot = this.props.filledSlots[day+hour]
+    let newState = Object.assign(this.state);
+    newState.daySlots[day][hour] = sslot;
+    this.setState(newState);
   }
   componentDidMount(){
     //initialization of store slot values
@@ -40,6 +60,7 @@ class SmartWeekSched extends Component {
   }
   constructor(props) {
     super(props);
+    this.updateInfoFromChildren = this.updateInfoFromChildren.bind(this);
     this.handleChildEvent = this.handleChildEvent.bind(this);
     this.dow = {
       1:'Monday',
@@ -78,9 +99,13 @@ class SmartWeekSched extends Component {
       )
     }
     return (
-      <div className='weekSchedule' id={this.props.id}>
-        {this.days}
+      <div>
+        <PopupModal ref={modal => {this.modal = modal;}} handler={this.updateInfoFromChildren} />
+        <div className='weekSchedule' id={this.props.id}>
+          {this.days}
+        </div>
       </div>
+
     );
   }
 }

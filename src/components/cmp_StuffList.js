@@ -4,7 +4,6 @@ import * as stuffActions from '../actions/stuffActions';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-window.check = {};
 class StuffList extends React.Component {
   componentDidMount(){
     this.props.stuffActions.makeStuff('Dave',1);
@@ -26,7 +25,6 @@ class StuffList extends React.Component {
     return divs;
   }
   render() {
-    window.check = this.props.stuffs;
     return (
       <div className="">
           {(this.props.stuffs.length > 0 ) ?

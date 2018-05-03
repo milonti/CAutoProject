@@ -7,6 +7,7 @@ import WeekSched from './components/cmp_WeekSched.jsx'
 import StuffList from './components/cmp_StuffList.js'
 import SmartDaySched from './components/cmp_SmartDaySched.jsx'
 import SmartWeekSched from './components/cmp_SmartWeekSched.jsx'
+import PopupModal from './components/cmp_PopupModal.jsx'
 
 class App extends Component {
   render() {
@@ -29,7 +30,7 @@ class App extends Component {
            {/*<StuffList />*/}
         </div><br></br>
         {/**<WeekSched id='week1' />**/}
-        <SmartWeekSched id='week1' />
+        <SmartWeekSched id='week1' ></SmartWeekSched>
       </div>
     );
   }

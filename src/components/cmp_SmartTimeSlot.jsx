@@ -22,10 +22,10 @@ class SmartTimeSlot extends Component {
   renderFilled() {
     return (
       <div className="timeSlot filled" id={this.props.id} onClick={(e)=>this.handleClick(e,this.props.id)} >
-        <span className="time">{this.props.time}</span>
-        <span className="meetingInfo">Name: {this.props.slot.person}</span>
-        <span className="meetingInfo">Phone #: {this.props.slot.phone}</span>
-        <span className="personName">Event Type: {this.props.slot.type}</span>
+        <span className="time">{this.props.time}</span><br />
+        <span className="meetingInfo">Name: {this.props.slot.name}</span><br />
+        <span className="meetingInfo">Phone #: {this.props.slot.phone}</span><br />
+        <span className="personName">Type: {this.props.slot.type}</span><br />
       </div>
     )
   }

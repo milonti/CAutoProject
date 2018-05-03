@@ -15,7 +15,6 @@ class SmartDaySched extends Component {
     )
   }
   static getDerivedStateFromProps(nextProps, prevState){
-    console.log('Updating state...')
     return {slotInfo: nextProps.slotInfo};
   }
   constructor(props){

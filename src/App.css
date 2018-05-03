@@ -49,6 +49,7 @@ table.weekCalendar {
 div.unfilled {
   background: darkslategray;
   color: rgb(165, 167, 217);
+  cursor: default;
 }
 
 th.dayHeader {
@@ -58,4 +59,56 @@ th.dayHeader {
 .time{
   padding: 5px 10px;
   line-height: 200%;
+}
+
+#modalBox {
+  position: absolute;
+  background-color: black;
+  color: #00ff00;
+  border: 3px solid #00ffff;
+  border-radius: 15px 15px;
+  z-index: 9;
+  width: 300px;
+  padding: 4px;
+}
+#modalBox td.label{
+  width:20%
+}
+#modalBox td:not(.label){
+  width:200px
+}
+#modalType{
+  width:100%;
+}
+.modSubmit {
+  /* display: flex; */
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  color: black;
+}
+.modSubmit div{
+  border: 2px white solid;
+  background-color: silver;
+  border-radius: 10%;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+.modSubmit div:active{
+  background-color: gray
+}
+#closeModBtn {
+  display: inline-block;
+  background-color: red;
+  width: 1em;
+  text-align: center;
+  color: white;
+  border: 4px white solid;
+  border-radius: 10%;
+  cursor: default;
+  font-weight: bold;
+}
+.close {
+  text-align: center;
 }
