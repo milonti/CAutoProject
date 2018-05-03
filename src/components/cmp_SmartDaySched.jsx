@@ -6,9 +6,11 @@ import SmartTimeSlot from './cmp_SmartTimeSlot.jsx';
 class SmartDaySched extends Component {
 
   createTdRowFromComponent(comp,kVal){
+    var classStr = "hourNum"
+    if(kVal === "Early" || kVal === "Late") classStr = "hourWord";
     return (
       <tr key={kVal}>
-        <td className={"hour"+kVal}  >
+        <td className={classStr}  >
           {comp}
         </td>
       </tr>

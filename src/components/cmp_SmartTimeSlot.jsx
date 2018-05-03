@@ -16,6 +16,9 @@ class SmartTimeSlot extends Component {
     return (
       <div className="timeSlot unfilled" id={this.props.id} onClick={(e)=>this.handleClick(e,this.props.id)}>
         <span className="time">{this.props.time}</span>
+          <span className="meetingInfo"></span><br />
+          <span className="meetingInfo"></span><br />
+          <span className="meetingInfo"></span><br />
       </div>
     )
   }
@@ -25,7 +28,7 @@ class SmartTimeSlot extends Component {
         <span className="time">{this.props.time}</span><br />
         <span className="meetingInfo">Name: {this.props.slot.name}</span><br />
         <span className="meetingInfo">Phone #: {this.props.slot.phone}</span><br />
-        <span className="personName">Type: {this.props.slot.type}</span><br />
+        <span className="meetingInfo">Type: {this.props.slot.type}</span>
       </div>
     )
   }

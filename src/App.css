@@ -2,31 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 table.weekCalendar {
   display: inline-table;
   border: 3px solid black;
@@ -39,6 +14,7 @@ table.weekCalendar {
 
 .weekCalendar td {
   border: 1px solid black;
+  font-weight: bold;
 }
 
 .weekCalendar th,td {
@@ -46,20 +22,40 @@ table.weekCalendar {
   width: 6em;
 }
 
-div.unfilled {
-  background: darkslategray;
-  color: rgb(165, 167, 217);
-  cursor: default;
-}
 
 th.dayHeader {
   background: darkcyan;
   color: goldenrod;
 }
+
+
+td.hourWord{
+  width: 200px;
+}
+.hourNum div.timeSlot{
+  text-align: left;
+  height: 95px;
+}
+div.unfilled {
+  background: darkslategray;
+  color: rgb(165, 167, 217);
+  cursor: default;
+  padding: 3px;
+}
+div.filled {
+  background: firebrick;
+  color: black;
+  cursor: default;
+  padding: 3px;
+}
 .time{
   padding: 5px 10px;
   line-height: 200%;
 }
+.meetingInfo {
+  padding-left: 5px;
+}
+
 
 #modalBox {
   position: absolute;
