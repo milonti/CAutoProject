@@ -19,14 +19,12 @@ type:'stuff'
 
 class SmartWeekSched extends Component {
   handleChildEvent(e,data){
+    if(data.endsWith("close")){
+
+    }
     let hour = parseInt(data.substring(data.search(/\d/),data.length-2));
     hour = (data.substring(data.length-2) === 'am' ? hour-7 : hour+5);
     let day = data.substring(data.search(/\d/),-1);
-    let sslot = this.props.filledSlots[day+hour]
-    let newState = Object.assign(this.state);
-    let aslot = disdis.slot;
-    newState.daySlots[day][hour] = sslot;
-    this.setState(newState);
     var targ = e.target;
     while(targ.tagName !== "TD"){
       targ = targ.parentElement;
@@ -40,8 +38,15 @@ class SmartWeekSched extends Component {
       this.modal.getWrappedInstance().toggleModal(modx,mody,day+hour);
     }
   }
+  clearTimeSlotChild(e,data){
+    let hour = parseInt(data.substring(data.search(/\d/),data.length-2));
+    hour = (data.substring(data.length-2) === 'am' ? hour-7 : hour+5);
+    let day = data.substring(data.search(/\d/),-1);
+    let newState = Object.assign(this.state);
+    newState.daySlots[day][hour] = {'name':'','phone':'','type':'Phone Call'}
+    this.setState(newState);
+  }
   updateInfoFromChildren(e,data){
-    console.log(data);
     let hour = parseInt(data.id.substring(data.id.search(/\d/)));
     let day = data.id.substring(0,data.id.search(/\d/));
     let sslot = this.props.filledSlots[day+hour]
@@ -62,6 +67,7 @@ class SmartWeekSched extends Component {
     super(props);
     this.updateInfoFromChildren = this.updateInfoFromChildren.bind(this);
     this.handleChildEvent = this.handleChildEvent.bind(this);
+    this.clearTimeSlotChild = this.clearTimeSlotChild.bind(this);
     this.dow = {
       1:'Monday',
       2:'Tuesday',
@@ -76,7 +82,7 @@ class SmartWeekSched extends Component {
     for(let d in this.dow){
       this.daySlots[this.dow[d]] = {}
       for(let hour = 2; hour < 11; hour++){
-        this.daySlots[this.dow[d]][hour] = {'name':'','phone':'123','type':'n'};
+        this.daySlots[this.dow[d]][hour] = {'name':'','phone':'','type':''};
       }
     }
     this.state = {
@@ -93,7 +99,8 @@ class SmartWeekSched extends Component {
           <tbody>
             <SmartDaySched
               dayOfWeek={this.dow[d]} dayType={(d >= 5)?'weekend':'weekday'}
-              handler={this.handleChildEvent} slotInfo={this.state.daySlots[this.dow[d]]} />
+              handler={this.handleChildEvent} slotInfo={this.state.daySlots[this.dow[d]]}
+              handler2={this.clearTimeSlotChild} />
           </tbody>
         </table>
       )

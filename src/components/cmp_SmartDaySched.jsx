@@ -21,6 +21,7 @@ class SmartDaySched extends Component {
   }
   constructor(props){
     super(props);
+    this.handler2 = this.props.handler2.bind(this);
     this.handleChildEvent = this.props.handler.bind(this);
     //Slots is going to map to table rows
     //As such rows 0,1,11 will have special initialization
@@ -46,7 +47,7 @@ class SmartDaySched extends Component {
       //Ternary helps us get correct mapping to AM and PM and right hour number
       timeString = (hour+7<13 ? (hour+7)+"am" : (hour-5)+"pm")
       let slotForHelper = <SmartTimeSlot time={timeString} id={this.props.dayOfWeek + timeString}
-        slot={this.state.slotInfo[hour]} handler={this.handleChildEvent} />
+        slot={this.state.slotInfo[hour]} handler={this.handleChildEvent} handler2={this.handler2}/>
       this.slots[hour] = this.createTdRowFromComponent(slotForHelper,hour);
     }
     return this.slots;

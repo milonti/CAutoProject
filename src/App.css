@@ -94,7 +94,7 @@ div.filled {
 .modSubmit div:active{
   background-color: gray
 }
-#closeModBtn {
+.closeModBtn {
   display: inline-block;
   background-color: red;
   width: 1em;
@@ -104,6 +104,19 @@ div.filled {
   border-radius: 10%;
   cursor: default;
   font-weight: bold;
+}
+.clearSlotBtn {
+  display: inline-block;
+  position: relative;
+  background-color: firebrick;
+  width: 1em;
+  text-align: center;
+  color: white;
+  border: 4px white solid;
+  border-radius: 10%;
+  cursor: default;
+  font-weight: bold;
+  left: 115px;
 }
 .close {
   text-align: center;

@@ -10,7 +10,10 @@ class PopupModal extends Component {
       open:true,
       x: xp,
       y: yp,
-      slotid: id
+      slotid: id,
+      modalName: '',
+      modalPhone: '',
+      modalType:'Phone Call',
     })
   }
   closeModal(){
@@ -83,7 +86,7 @@ class PopupModal extends Component {
             <tr>
               <td className='label'><span>Name:&nbsp; </span> </td>
               <td><input type="text" id='modalName' name='modalName' onChange={this.handleChange} ></input></td>
-              <td className='close'><div id='closeModBtn' onClick={this.close}>X</div></td>
+              <td className='close'><div className='closeModBtn' onClick={this.close}>X</div></td>
             </tr>
             <tr>
               <td className='label'><span>Phone:&nbsp; </span> </td>
